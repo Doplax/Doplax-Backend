@@ -7,4 +7,5 @@ node_modules
 mongo
 # FILES
 .env
+.env.test
 .vercel
