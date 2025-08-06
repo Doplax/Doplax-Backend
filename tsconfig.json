@@ -9,7 +9,14 @@
     "skipLibCheck": true,
     "baseUrl": "./src",            // <-- esto es clave
     "paths": {
-      "@/*": ["*"]                 // <-- alias principal
+      "@/*": ["*"],                 // <-- alias principal (mantener para compatibilidad)
+      "@shared/*": ["shared/*"],    // <-- alias para elementos compartidos
+      "@modules/*": ["modules/*"],  // <-- alias para módulos
+      "@auth/*": ["modules/auth/*"], // <-- alias específico para auth
+      "@products/*": ["modules/products/*"], // <-- alias específico para products
+      "@tracks/*": ["modules/tracks/*"], // <-- alias específico para tracks
+      "@email/*": ["modules/email/*"], // <-- alias específico para email
+      "@images/*": ["modules/images/*"] // <-- alias específico para images
     }
   },
   "include": [
