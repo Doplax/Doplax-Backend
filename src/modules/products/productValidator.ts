@@ -1,5 +1,5 @@
 import { check } from "express-validator";
-import { handleValidatorsResult } from "@shared/index";
+import { handleValidatorsResult } from "../../shared/index";
 
 const productValidationRules = [
   check("name")

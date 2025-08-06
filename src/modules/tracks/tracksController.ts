@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { handleHttpError, User } from "@shared/index";
+import { handleHttpError, User } from "../../shared/index";
 import { tracksList } from "../../../public/music/main-music/tracksList";
 
 export const getItems = async (req: Request, res: Response): Promise<void> => {

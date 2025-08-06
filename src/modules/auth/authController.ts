@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { matchedData } from "express-validator";
-import { User, handleHttpError, encrypt, compare, tokenSign } from "@shared/index";
+import { User, handleHttpError, encrypt, compare, tokenSign } from "../../shared/index";
 
 export const registerCtrl = async (req: Request, res: Response): Promise<void> => {
   try {

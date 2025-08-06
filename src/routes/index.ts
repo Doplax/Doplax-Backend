@@ -1,15 +1,15 @@
 // Import middlewares and modules
 import { Request, Response, NextFunction, Router } from "express";
-import { authMiddleware } from "@shared/index";
+import { authMiddleware } from "../shared/index";
 
 const router = Router();
 
 // Import routes and controllers from modules
-import { authRoutes } from "@modules/auth";
-import { emailRoutes } from "@modules/email";
-import { productRoutes } from "@modules/products";
-import { imagesRoutes } from "@modules/images";
-import { tracksRoutes } from "@modules/tracks";
+import { authRoutes } from "../modules/auth";
+import { emailRoutes } from "../modules/email";
+import { productRoutes } from "../modules/products";
+import { imagesRoutes } from "../modules/images";
+import { tracksRoutes } from "../modules/tracks";
 import swaggerRoutes from "./api/swaggerDocs";
 import changeLocale from "./web/changeLocale";
 

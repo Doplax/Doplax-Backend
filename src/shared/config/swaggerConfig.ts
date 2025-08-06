@@ -1,7 +1,8 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import path from "node:path";
 
-import { productSwaggerDocs, userSwaggerDocs } from "../docs/index";
+// Temporarily disable docs import to avoid model conflicts
+// import { productSwaggerDocs, userSwaggerDocs } from "../docs/index";
 
 const swaggerOptions = {
   definition: {
@@ -9,12 +10,13 @@ const swaggerOptions = {
     info: {
       title: "NodePop API",
       version: "1.0.0",
-      description: "Documentación generada automáticamente",
+      description: "Documentación generada automáticamente - Modular Structure",
     },
     components: {
       schemas: {
-        ...productSwaggerDocs.components.schemas,
-        ...userSwaggerDocs.components.schemas,
+        // Temporarily disable schema imports to avoid model conflicts
+        // ...productSwaggerDocs.components.schemas,
+        // ...userSwaggerDocs.components.schemas,
       },
     }
     //

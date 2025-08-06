@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { handleHttpError } from "@shared/index";
+import { handleHttpError } from "../../shared/index";
 import { sendEmail } from "./nodemailerConfig";
 import contactMeTemplate from "./emails/contactMeTemplate";
 

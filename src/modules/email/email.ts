@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import {
   contactMe,
-} from "../../controllers/emailController";
+} from "./emailController";
 //const { validateCreate } = require("../validators/users");
 
 // POST

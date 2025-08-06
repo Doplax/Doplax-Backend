@@ -8,8 +8,8 @@ import {
   updateItem,
   deleteItem,
 } from "./productController";
-import { verifyProductExists } from "@shared/index";
-import { uploadMiddleware } from "@images/index";
+import { verifyProductExists } from "../../shared/index";
+import { uploadMiddleware } from "../images/index";
 
 /**
  * @swagger

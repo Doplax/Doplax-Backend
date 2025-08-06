@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Product, handleHttpError } from "@shared/index";
+import { Product, handleHttpError } from "../../shared/index";
 
 export const getImage = async (req: Request, res: Response): Promise<void> => {
   try {
