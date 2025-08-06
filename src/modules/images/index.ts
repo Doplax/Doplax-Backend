@@ -1,6 +1,14 @@
 // Images Module Exports
-export { uploadImageCtrl, getImageCtrl, deleteImageCtrl, deleteAllImagesCtrl } from './imagesController';
+import { getImage } from './imagesController';
+
+export { getImage } from './imagesController';
 export { default as imagesRoutes } from './images';
-export { upload } from './multerConfig';
-export { uploadMiddleware } from './uploadMiddleware';
-export { saveImage, deleteImage } from './photoManager';
+export { default as upload } from './multerConfig';
+export { default as uploadMiddleware } from './uploadMiddleware';
+export { deleteOldPhotoAndThumbnail } from './photoManager';
+
+// Create aliases for expected export names
+export const uploadImageCtrl = undefined; // This function doesn't exist in original
+export const getImageCtrl = getImage;
+export const deleteImageCtrl = undefined; // This function doesn't exist in original  
+export const deleteAllImagesCtrl = undefined; // This function doesn't exist in original

@@ -1,4 +1,4 @@
-import upload from "../config/multerConfig";
+import upload from "./multerConfig";
 
 const uploadMiddleware = {
   uploadSingle: upload.single("photo"),

@@ -1,15 +1,15 @@
 import { Router } from "express";
 const router = Router();
-import productValidationRules from "../../validators/productValidator";
+import { validateProduct } from "./productValidator";
 import {
   getItems,
   getItem,
   createItem,
   updateItem,
   deleteItem,
-} from "../../controllers/productController";
-import uploadMiddleware from "../../middlewares/uploadMiddleware";
-import verifyProductExists from "../../middlewares/verifyProductExists";
+} from "./productController";
+import { verifyProductExists } from "@shared/index";
+import { uploadMiddleware } from "@images/index";
 
 /**
  * @swagger
@@ -82,7 +82,7 @@ router.get("/:id", getItem);
 router.post(
   "/",
   uploadMiddleware.uploadSingle,
-  productValidationRules,
+  validateProduct,
   createItem
 );
 
@@ -117,7 +117,7 @@ router.put(
   "/:id",
   verifyProductExists,
   uploadMiddleware.uploadSingle,
-  productValidationRules,
+  validateProduct,
   updateItem
 );
 
