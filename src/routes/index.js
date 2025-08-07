@@ -9,6 +9,7 @@ const emailRoutes = require("./api/email.js");
 const productRoutes = require("./api/products.js");
 const imagesRoutes = require("./api/images.js");
 const swaggerRoutes = require("./api/swaggerDocs.js");
+const gptRoutes = require("../modules/gpt/gpt.routes.js");
 
 const tracksRoutes = require("./api/tracks.js");
 const changeLocale = require("./web/changeLocale.js");
@@ -28,6 +29,7 @@ router.use("/api/email", emailRoutes);
 router.use("/api/images", imagesRoutes);
 router.use("/api/swaggerDocs", swaggerRoutes);
 router.use("/api/tracks", tracksRoutes);
+router.use("/api/gpt", gptRoutes);
 
 // - Protected routes
 router.use("/api/products", authMiddleware, productRoutes);
