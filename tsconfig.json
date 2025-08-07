@@ -1,27 +1,32 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "target": "ES2020",
-    "module": "CommonJS",
-    "rootDir": "./",
+    "sourceMap": true,
     "outDir": "./dist",
-    "esModuleInterop": true,
-    "strict": true,
+    "baseUrl": "./",
+    "incremental": true,
     "skipLibCheck": true,
-    "baseUrl": "./",            
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
     "paths": {
       "@/public/*": ["./public/*"],      
       "@/*": ["./src/*"]  
     }
   },
   "include": [
-    "index.ts",
     "src/**/*"
-, "index.route.ts"  ],
+  ],
   "exclude": [
     "node_modules",
     "dist"
-  ],
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+  ]
 }

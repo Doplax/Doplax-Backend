@@ -1,36 +1,62 @@
-import { Request, Response } from "express";
-import handleHttpError from "@/utils/errorHandler";
-import { tracksList as mainMusicTracks } from "@/public/music/lofi-music";
-import { tracksList as lofiMusicTracks } from "@/public/music/lofi-music";
-import User from "@/modules/wallapop/models/User.model";
+import { Controller, Get, Post, Patch, Delete, Body, Param } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import handleHttpError from '@/utils/errorHandler';
+import { tracksList as mainMusicTracks } from '@/public/music/lofi-music';
+import { tracksList as lofiMusicTracks } from '@/public/music/lofi-music';
+import User from '@/modules/wallapop/models/User.model';
 
-export const getItems = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const allTracks = [...mainMusicTracks, ...lofiMusicTracks];
-    res.send({ data: allTracks });
-  } catch (e: any) {
-    handleHttpError(res, e);
+@ApiTags('Tracks')
+@Controller('api/tracks')
+export class TracksController {
+
+  @Get()
+  @ApiOperation({ summary: 'Get all tracks' })
+  @ApiResponse({ status: 200, description: 'Returns all tracks' })
+  async getItems() {
+    try {
+      const allTracks = [...mainMusicTracks, ...lofiMusicTracks];
+      return { data: allTracks };
+    } catch (e: any) {
+      throw new Error(e);
+    }
   }
-};
 
-export const getItem = (req: Request, res: Response): void => {
-  // Implementation pending
-};
-
-export const createItem = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const { name, age, email } = req.body;
-    const resDetail = await User.create({
-      name,
-      age,
-      email,
-    });
-    res.send({ data: resDetail });
-  } catch (e: any) {
-    handleHttpError(res, e);
+  @Get(':id')
+  @ApiOperation({ summary: 'Get track by ID' })
+  @ApiResponse({ status: 200, description: 'Returns a track by ID' })
+  getItem(@Param('id') id: string) {
+    // Implementation pending
+    return { message: 'Implementation pending', id };
   }
-};
 
-export const updateItem = (req: Request, res: Response): void => {};
+  @Post()
+  @ApiOperation({ summary: 'Create a new track' })
+  @ApiResponse({ status: 201, description: 'Track created successfully' })
+  async createItem(@Body() body: { name: string; age: number; email: string }) {
+    try {
+      const { name, age, email } = body;
+      const resDetail = await User.create({
+        name,
+        age,
+        email,
+      });
+      return { data: resDetail };
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
 
-export const deleteItem = (req: Request, res: Response): void => {};
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update track by ID' })
+  @ApiResponse({ status: 200, description: 'Track updated successfully' })
+  updateItem(@Param('id') id: string, @Body() body: any) {
+    return { message: 'Update implementation pending', id, body };
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete track by ID' })
+  @ApiResponse({ status: 200, description: 'Track deleted successfully' })
+  deleteItem(@Param('id') id: string) {
+    return { message: 'Delete implementation pending', id };
+  }
+}
