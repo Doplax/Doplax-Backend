@@ -15,27 +15,43 @@ const {
 
 class GptService {
   constructor() {
-    this.openai = new OpenAI({ apiKey: process.env.OPEN_API_KEY });
+    if (process.env.OPEN_API_KEY) {
+      this.openai = new OpenAI({ apiKey: process.env.OPEN_API_KEY });
+    } else {
+      console.warn('OpenAI API key not found. GPT services will not be available.');
+      this.openai = null;
+    }
+  }
+
+  _checkOpenAI() {
+    if (!this.openai) {
+      throw new Error('OpenAI API key not configured. Please set OPEN_API_KEY environment variable.');
+    }
   }
 
   // Solo va a llamar casos de uso
   async orthographyCheck({ prompt }) {
+    this._checkOpenAI();
     return await orthographyCheckUseCase(this.openai, { prompt });
   }
 
   async prosConsDicusser({ prompt }) {
+    this._checkOpenAI();
     return await prosConsDicusserUseCase(this.openai, { prompt });
   }
 
   async prosConsDicusserStream({ prompt }) {
+    this._checkOpenAI();
     return await prosConsDicusserStreamUseCase(this.openai, { prompt });
   }
 
   async translateText({ prompt, lang }) {
+    this._checkOpenAI();
     return await translateUseCase(this.openai, { prompt, lang });
   }
 
   async textToAudio({ prompt, voice }) {
+    this._checkOpenAI();
     return await textToAudioUseCase(this.openai, { prompt, voice });
   }
 
@@ -54,11 +70,13 @@ class GptService {
   }
 
   async audioToText(audioFile, audioToText) {
+    this._checkOpenAI();
     const { prompt } = audioToText || {};
     return await audioToTextUsecase(this.openai, { audioFile, prompt });
   }
 
   async imageGeneration(imageGeneration) {
+    this._checkOpenAI();
     return await imageGenerationUseCase(this.openai, { ...imageGeneration });
   }
 
@@ -74,6 +92,7 @@ class GptService {
   }
 
   async generateImageVariation({ baseImage }) {
+    this._checkOpenAI();
     return await imageVariationUseCase(this.openai, { baseImage });
   }
 }
