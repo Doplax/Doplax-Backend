@@ -1,6 +1,7 @@
 # FOLDERS
 .vscode
 node_modules
+dist
 #public/images/
 #public/thumbnails/
 
@@ -11,3 +12,7 @@ mongo
 
 # Backup files
 *.backup
+
+# NestJS build artifacts
+dist/
+*.tsbuildinfo

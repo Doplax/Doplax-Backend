@@ -1,6 +1,8 @@
-# Common Backend for Projects
+# Common Backend for Projects (NestJS)
 
 This project is a **common backend** designed to serve as a unified backend for multiple applications, avoiding the need to develop a separate backend for each project. By centralizing backend logic, maintenance, scalability, and development efficiency are improved.
+
+**🎉 Recently migrated from Express.js to NestJS!**
 
 Currently, this backend serves the following projects:
 - [NodePop Frontend](https://github.com/Doplax/NodePop-Frontend)
@@ -8,14 +10,42 @@ Currently, this backend serves the following projects:
 
 ---
 
+## Migration Notes
+
+This project has been successfully migrated from Express.js to NestJS while maintaining the modular structure:
+
+### ✅ Migrated Modules
+- **Auth Module**: Authentication with register, login, and JWT guards
+- **Tracks Module**: Music tracks management with full REST API
+- **Email Module**: Contact email functionality
+
+### 🔄 In Progress
+- **Wallapop Module**: Products and images management
+- **Swagger Module**: API documentation system
+- **Locales Module**: Internationalization
+
+### New Structure
+```
+src/
+├── main.ts              # NestJS entry point
+├── app.module.ts        # Root module
+└── modules/
+    ├── auth/           # Authentication module
+    ├── tracks/         # Music tracks module
+    ├── email/          # Email module
+    └── ...
+```
+
+---
+
 ## Key Features
 
-- **Data Validation**: Ensures consistency and security for user-provided data.
-- **MongoDB Connection**: Uses MongoDB as the main database for data storage.
-- **Linter Configuration**: Ensures clean and readable code following best practices.
-- **Swagger Documentation**: All endpoints are documented using Swagger to facilitate integration and consumption.
-- **Cluster and Microservices**: Advanced configuration for cluster environments and microservices using Cote.
-- **Docker Support**: Enables running the backend in containers using `docker-compose`.
+- **NestJS Framework**: Modern, scalable Node.js backend framework
+- **Data Validation**: Using class-validator and DTOs for type safety
+- **MongoDB Connection**: Uses MongoDB with Mongoose ODM
+- **Swagger Documentation**: Automatic API documentation generation
+- **Modular Architecture**: Clean separation of concerns with NestJS modules
+- **Docker Support**: Enables running the backend in containers using `docker-compose`
 
 ---
 
@@ -59,7 +89,11 @@ Currently, this backend serves the following projects:
 
 4. **Start the server**:
    ```bash
-   npm run dev
+   # Development mode with hot reload
+   npm run start:dev
+   
+   # Production mode
+   npm run build && npm start
    ```
    The server will be available at [http://localhost:4000](http://localhost:4000).
 
@@ -70,10 +104,37 @@ Currently, this backend serves the following projects:
 
 ---
 
+## Available Scripts
+
+- `npm run start:dev` - Start development server with hot reload
+- `npm run build` - Build the application for production
+- `npm start` - Start production server
+- `npm run test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+
+---
+
 ## API Documentation
 
 API documentation is available via Swagger. Once the server is running, you can access it at:
-[http://localhost:4000/docs](http://localhost:4000/docs)
+[http://localhost:4000/api/swaggerDocs/swagger-ui](http://localhost:4000/api/swaggerDocs/swagger-ui)
+
+### Available Endpoints
+
+#### Authentication
+- `POST /api/auth/register` - Register new user
+- `POST /api/auth/login` - Login user
+- `GET /api/auth/users` - Get all users
+
+#### Tracks
+- `GET /api/tracks` - Get all music tracks
+- `GET /api/tracks/:id` - Get track by ID
+- `POST /api/tracks` - Create new track
+- `PATCH /api/tracks/:id` - Update track
+- `DELETE /api/tracks/:id` - Delete track
+
+#### Email
+- `POST /api/email/contactMe` - Send contact email
 
 ---
 
