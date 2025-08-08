@@ -1,13 +1,9 @@
+import { IUser } from "@/modules/auth/models/User.model";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
 
-interface User {
-  _id: string;
-  [key: string]: any;
-}
-
-export const tokenSign = async (user: User): Promise<string> => {
+export const tokenSign = async (user: IUser): Promise<string> => {
   const sign = jwt.sign(
     {
       _id: user._id,

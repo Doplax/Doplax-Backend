@@ -1,10 +1,12 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types} from "mongoose";
 
 // Interfaz con los campos del usuario
 export interface IUser extends Document {
+  _id: Types.ObjectId; 
   email: string;
   password: string;
 }
+
 
 // Esquema Mongoose
 const UserSchema: Schema<IUser> = new Schema(

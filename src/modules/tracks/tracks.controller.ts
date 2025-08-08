@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import handleHttpError from "@/shared/utils/errorHandler";
 import { tracksList as mainMusicTracks } from "@/public/music/lofi-music";
 import { tracksList as lofiMusicTracks } from "@/public/music/lofi-music";
-import User from "@/modules/wallapop/models/User.model";
+import User from "@/modules/auth/models/User.model";
 
 export const getItems = async (req: Request, res: Response): Promise<void> => {
   try {

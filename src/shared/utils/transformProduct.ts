@@ -1,21 +1,18 @@
 import { Request } from "express";
+import { IProduct } from "@/modules/wallapop/models/Product.model";
 
-interface ProductDoc {
-  _doc?: any;
-  _id: string;
-  photo?: {
-    data: any;
-  };
-  toObject?: () => any;
-}
+export const transformProduct = (product: IProduct, req: Request) => { // <--
+  const productData =
+    (product as any)._doc ||
+    product.toObject?.() ||
+    product;
 
-export const transformProduct = (product: ProductDoc, req: Request): any => {
-  const productData = product._doc || product.toObject?.() || product;
   const { photo, ...rest } = productData;
+
   return {
     ...rest,
     imgSrc: photo?.data
-      ? `${req.protocol}://${req.get("host")}/api/images/${product._id}`
+      ? `${req.protocol}://${req.get("host")}/api/images/${product._id.toString()}` // <-- ensure string
       : null,
   };
 };

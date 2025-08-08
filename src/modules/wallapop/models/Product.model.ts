@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types } from "mongoose";
 
 export type Tag = "Laptop" | "Tablet" | "Smartphone" | "Desktop";
 
@@ -13,8 +13,9 @@ export interface ProductData {
   tags?: Tag[];
 }
 
-export interface IProduct extends ProductData, Document {}
-
+export interface IProduct extends ProductData, Document {
+  _id: Types.ObjectId; 
+}
 const ProductSchema: Schema<IProduct> = new Schema(
   {
     name: {

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { matchedData } from "express-validator";
-import User, { IUser } from "@/modules/wallapop/models/User.model"; // <-- Usa tu alias o ruta relativa si no has configurado alias
+import User, { IUser } from "@/modules/auth/models/User.model"; // <-- Usa tu alias o ruta relativa si no has configurado alias
 import handleHttpError from "@/shared/utils/errorHandler";
 import { encrypt, compare } from "@/shared/utils/handlePassword";
 import { tokenSign } from "@/shared/utils/handleJwt";

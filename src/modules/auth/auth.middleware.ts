@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import handleHttpError from "@/shared/utils/errorHandler";
 import { verifyToken } from "@/shared/utils/handleJwt";
-import User from "@/modules/wallapop/models/User.model";
+import User from "@/modules/auth/models/User.model";
 
 declare global {
   namespace Express {
