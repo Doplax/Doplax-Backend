@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Product from "@/modules/wallapop/models/Product.model";
-import handleHttpError from "@/utils/errorHandler";
+import handleHttpError from "@/shared/utils/errorHandler";
 
 export const getImage = async (req: Request, res: Response): Promise<void> => {
   try {

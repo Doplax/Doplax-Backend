@@ -10,10 +10,10 @@ import cookieParser from "cookie-parser";
 
 // Configuraciones internas
 import {indexRouter} from "./index.route";
-import i18n from "@/config/i18nConfigure";
+import i18n from "@/shared/config/i18nConfigure";
 
 // Conexión a la DB
-import connectDB from "@/config/mongo";
+import connectDB from "@/shared/config/mongo";
 connectDB(); // conecta la base de datos
 
 const app = express();

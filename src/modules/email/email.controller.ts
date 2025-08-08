@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import handleHttpError from "@/utils/errorHandler";
-import { sendEmail } from "@/config/nodemailerConfig";
+import handleHttpError from "@/shared/utils/errorHandler";
+import { sendEmail } from "@/shared/config/nodemailerConfig";
 import contactMeTemplate from "@/modules/email/templates/contactMeTemplate";
 
 export const contactMe = async (req: Request, res: Response): Promise<void> => {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import handleHttpError from "@/utils/errorHandler";
+import handleHttpError from "@/shared/utils/errorHandler";
 import { tracksList as mainMusicTracks } from "@/public/music/lofi-music";
 import { tracksList as lofiMusicTracks } from "@/public/music/lofi-music";
 import User from "@/modules/wallapop/models/User.model";

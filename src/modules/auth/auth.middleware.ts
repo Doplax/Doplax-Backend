@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import handleHttpError from "@/utils/errorHandler";
-import { verifyToken } from "@/utils/handleJwt";
+import handleHttpError from "@/shared/utils/errorHandler";
+import { verifyToken } from "@/shared/utils/handleJwt";
 import User from "@/modules/wallapop/models/User.model";
 
 declare global {
