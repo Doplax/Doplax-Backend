@@ -72,4 +72,9 @@ router.post("/login", validatorLogin, loginCtrl);
  */
 router.get("/users", getAllUsersCtrl);
 
+router.get("/test", (req, res) => {
+  res.send({ message: "Auth route is working!" });
+});
+
+
 export default router;
